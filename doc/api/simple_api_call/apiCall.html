@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="API docs for the apiCall function from the simple_api_call library, for the Dart programming language.">
+  <title>apiCall function - simple_api_call library - Dart API</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../static-assets/github.css?v1">
+  <link rel="stylesheet" href="../static-assets/styles.css?v1">
+  <link rel="icon" href="../static-assets/favicon.png?v1">
+  
+</head>
+
+<body data-base-href="../" data-using-base-href="false" class="light-theme">
+<div id="overlay-under-drawer"></div>
+<header id="title">
+  <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="../index.html">simple_api_call</a></li>
+    <li><a href="../simple_api_call">simple_api_call.dart</a></li>
+    <li class="self-crumb">apiCall function</li>
+  </ol>
+  <div class="self-name">apiCall</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+  <div class="toggle" id="theme-button" title="Toggle brightness">
+    <label for="theme">
+      <input type="checkbox" id="theme" value="light-theme">
+      <span id="dark-theme-button" class="material-symbols-outlined">
+        dark_mode
+      </span>
+      <span id="light-theme-button" class="material-symbols-outlined">
+        light_mode
+      </span>
+    </label>
+  </div>
+</header>
+<main>
+  <div
+      id="dartdoc-main-content"
+      class="main-content"
+      data-above-sidebar="simple_api_call&#47;simple_api_call-library-sidebar.html"
+      data-below-sidebar="">
+      <div>
+<h1><span class="kind-function">apiCall</span> function 
+ 
+</h1></div>
+
+    <section class="multi-line-signature">
+        
+<span class="returntype"><a href="https://api.dart.dev/stable/3.7.0/dart-core/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../simple_api_call/ApiResponse-class.html">ApiResponse</a></span>&gt;</span></span>
+<span class="name ">apiCall</span>(<wbr><ol class="parameter-list"> <li><span class="parameter" id="apiCall-param-url"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.7.0/dart-core/String-class.html">String</a></span> <span class="parameter-name">url</span>, {</span></li>
+<li><span class="parameter" id="apiCall-param-options"><span class="type-annotation"><a href="../simple_api_call/Options-class.html">Options</a></span> <span class="parameter-name">options</span> = <span class="default-value">const Options()</span>, </span></li>
+</ol>})
+
+        
+
+    </section>
+    
+<section class="desc markdown">
+  <p>Makes an API call to the specified <code>url</code> as per the given options.</p>
+<p>This function sends an HTTP request to the provided <code>url</code> and returns
+the response wrapped in an <code>ApiResponse</code> object. It allows customization
+of the request through the optional <code>options</code> parameter.</p>
+<h3 id="parameters">Parameters:</h3>
+<ul>
+<li><code>url</code>: The endpoint URL to which the API request is sent.</li>
+<li><code>options</code>: Optional configuration for the request, such as headers,
+query parameters, timeout, etc. Defaults to an empty <code>Options(method: HttpMethod.get)</code> object.</li>
+</ul>
+<h3 id="returns">Returns:</h3>
+<p>A <code>Future</code> that completes with an <code>ApiResponse</code> object containing:</p>
+<ul>
+<li>The response data (if the request is successful).</li>
+<li>Error message (if the request fails).</li>
+</ul>
+<h3 id="example-1-simple-get-api-call">Example 1: Simple GET api call</h3>
+<pre class="language-dart"><code class="language-dart">var res = await apiCall('https://jsonplaceholder.typicode.com/todos/1');
+print(res);
+</code></pre>
+<p><strong>Output:</strong></p>
+<pre class="language-txt"><code class="language-txt">ApiResponse(
+  Ok: true
+  Headers: {x-ratelimit-reset: 1739370722, x-ratelimit-limit: 1000, date: Sun, 16 Feb 2025 07:15:03 GMT, transfer-encoding: chunked, vary: Origin, Accept-Encoding, content-encoding: gzip, x-ratelimit-remaining: 999, pragma: no-cache, server: cloudflare, reporting-endpoints: heroku-nel=https://nel.heroku.com/reports?ts=1739370677&amp;sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&amp;s=c4034Ntzv9xG2rv4p9jTn01XXS2WI5YBk%2BZUpEh0KUI%3D, cf-ray: 912bbe898f4ce165-MRS, etag: W/"53-hfEnumeNh6YirfjyjaujcOPPT+s", connection: keep-alive, cache-control: max-age=43200, age: 2596, server-timing: cfL4;desc="?proto=TCP&amp;rtt=275810&amp;min_rtt=262832&amp;rtt_var=88203&amp;sent=5&amp;recv=7&amp;lost=0&amp;retrans=0&amp;sent_bytes=2810&amp;recv_bytes=719&amp;delivery_rate=12063&amp;cwnd=223&amp;unsent_bytes=0&amp;cid=5ff42c7a50985390&amp;ts=324&amp;x=0", report-to: {"group":"heroku-nel","max_age":3600,"endpoints":[{"url":"https://nel.heroku.com/reports?ts=1739370677&amp;sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&amp;s=c4034Ntzv9xG2rv4p9jTn01XXS2WI5YBk%2BZUpEh0KUI%3D"}]}, cf-cache-status: HIT, content-type: application/json; charset=utf-8, access-control-allow-credentials: true, x-powered-by: Express, alt-svc: h3=":443"; ma=86400, nel: {"report_to":"heroku-nel","max_age":3600,"success_fraction":0.005,"failure_fraction":0.05,"response_headers":["Via"]}, via: 1.1 vegur, x-content-type-options: nosniff, expires: -1}
+  Status Code: 200
+  Status Message: OK
+  JSON: {userId: 1, id: 1, title: delectus aut autem, completed: false}
+  Body: {userId: 1, id: 1, title: delectus aut autem, completed: false}
+)
+</code></pre>
+<h3 id="example-2-post-api-call">Example 2: POST api call</h3>
+<pre class="language-dart"><code class="language-dart">res = await apiCall(
+  'https://jsonplaceholder.typicode.com/todos',
+  options: Options(
+    method: HttpMethod.post,
+    json: {'title': 'foo', 'body': 'bar', 'userId': 1},
+  ),
+);
+print('res.ok: ${res.ok}');
+print('res.statusCode: ${res.statusCode}');
+print('res.statusMessage: ${res.statusMessage}');
+print('res.json: ${res.json}');
+print('res.body: ${res.body}');
+print('res.headers: ${res.headers}');
+print('res.error: ${res.error}');
+</code></pre>
+<p><strong>Output:</strong></p>
+<pre class="language-txt"><code class="language-txt">res.ok: true
+res.statusCode: 201
+res.statusMessage: Created
+res.json: {title: foo, body: bar, userId: 1, id: 201}
+res.body: {title: foo, body: bar, userId: 1, id: 201}
+res.headers: {x-ratelimit-reset: 1739690470, x-ratelimit-limit: 1000, date: Sun, 16 Feb 2025 07:20:47 GMT, vary: Origin, X-HTTP-Method-Override, Accept-Encoding, x-ratelimit-remaining: 999, access-control-expose-headers: Location, pragma: no-cache, server: cloudflare, location: https://jsonplaceholder.typicode.com/todos/201, reporting-endpoints: heroku-nel=https://nel.heroku.com/reports?ts=1739690447&amp;sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&amp;s=XjgxrdvNN77WuG%2FKJaG8Ak0UcXg20np1rZx0c%2F5lsdw%3D, content-length: 65, cf-ray: 912bc6f0f96ae1d0-MRS, etag: W/"41-S72XhYKRBNSGo0mxoArJPNcK+ug", connection: keep-alive, cache-control: no-cache, server-timing: cfL4;desc="?proto=TCP&amp;rtt=273148&amp;min_rtt=271947&amp;rtt_var=104383&amp;sent=5&amp;recv=6&amp;lost=0&amp;retrans=0&amp;sent_bytes=2811&amp;recv_bytes=809&amp;delivery_rate=13318&amp;cwnd=251&amp;unsent_bytes=0&amp;cid=125845bdc8fbdb1b&amp;ts=656&amp;x=0", report-to: {"group":"heroku-nel","max_age":3600,"endpoints":[{"url":"https://nel.heroku.com/reports?ts=1739690447&amp;sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&amp;s=XjgxrdvNN77WuG%2FKJaG8Ak0UcXg20np1rZx0c%2F5lsdw%3D"}]}, cf-cache-status: DYNAMIC, content-type: application/json; charset=utf-8, access-control-allow-credentials: true, x-powered-by: Express, alt-svc: h3=":443"; ma=86400, nel: {"report_to":"heroku-nel","max_age":3600,"success_fraction":0.005,"failure_fraction":0.05,"response_headers":["Via"]}, via: 1.1 vegur, x-content-type-options: nosniff, expires: -1}
+res.error: null
+</code></pre>
+<h3 id="example-3-form-data-upload-with-progress-updates">Example 3: Form Data Upload with progress updates</h3>
+<pre class="language-dart"><code class="language-dart">var res = await apiCall(
+  'https://api.escuelajs.co/api/v1/files/upload',
+  options: Options(
+    method: HttpMethod.post,
+    formData: FormData(
+      fields: {'name': 'Rituraj', 'age': ['20']},
+      files: {'file': 'pubspec.lock', 'songs': ['music.mp3', 'tune.mp3']},
+    ), // files must exist
+    onSendProgress:(sent, total) {
+      print('Sent: $sent/$total (${(sent * 100 / total).toStringAsFixed(2)}%)');
+    },
+    onReceiveProgress:(sent, total) {
+      print('Receive: $sent/$total (${(sent * 100 / total).toStringAsFixed(2)}%)');
+    },
+  ),
+);
+print(res);
+</code></pre>
+<p><strong>Output:</strong></p>
+<pre class="language-txt"><code class="language-txt">Sent: 29/3627 (0.80%)
+Sent: 76/3627 (2.10%)
+Sent: 83/3627 (2.29%)
+Sent: 85/3627 (2.34%)
+Sent: 114/3627 (3.14%)
+Sent: 160/3627 (4.41%)
+Sent: 162/3627 (4.47%)
+Sent: 164/3627 (4.52%)
+Sent: 193/3627 (5.32%)
+Sent: 305/3627 (8.41%)
+Sent: 3594/3627 (99.09%)
+Sent: 3596/3627 (99.15%)
+Sent: 3627/3627 (100.00%)
+Receive: 115/115 (100.00%)
+ApiResponse(
+  Ok: true
+  Headers: {connection: keep-alive, x-powered-by: Express, date: Sun, 16 Feb 2025 07:32:34 GMT, access-control-allow-origin: *, reporting-endpoints: heroku-nel=https://nel.heroku.com/reports?ts=1739691154&amp;sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&amp;s=apdZjJfRbz1LuU6zwa%2Frp5SCRl6oKtamUnSDbpD7XQo%3D, content-length: 115, nel: {"report_to":"heroku-nel","max_age":3600,"success_fraction":0.005,"failure_fraction":0.05,"response_headers":["Via"]}, report-to: {"group":"heroku-nel","max_age":3600,"endpoints":[{"url":"https://nel.heroku.com/reports?ts=1739691154&amp;sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&amp;s=apdZjJfRbz1LuU6zwa%2Frp5SCRl6oKtamUnSDbpD7XQo%3D"}]}, etag: W/"73-1JcWeVg6NkoEkXmerMyEq+GNFAw", via: 1.1 vegur, content-type: application/json; charset=utf-8, server: Cowboy}
+  Status Code: 201
+  Status Message: Created
+  JSON: {originalname: pubspec.lock, filename: 1591.lock, location: https://api.escuelajs.co/api/v1/files/1591.lock}
+  Body: {originalname: pubspec.lock, filename: 1591.lock, location: https://api.escuelajs.co/api/v1/files/1591.lock}
+)
+</code></pre>
+<h3 id="example-4-api-call-with-custom-timeout-and-url-search-params-query">Example 4: API call with custom timeout and URL search params (query)</h3>
+<pre class="language-dart"><code class="language-dart">var res = await apiCall(
+  'https://jsonplaceholder.typicode.com/todos',
+  options: Options(
+    timeout: Duration(milliseconds: 100),
+    query: {'limit': '20', 'page': '1'},
+  ),
+);
+print(res);
+</code></pre>
+<p><strong>Output:</strong></p>
+<pre class="language-txt"><code class="language-txt">ApiResponse(
+  Ok: false
+  Headers: {}
+  Error: The request connection took longer than 0:00:00.100000 and it was aborted. To get rid of this exception, try raising the RequestOptions.connectTimeout above the duration of 0:00:00.100000 or improve the response time of the server.
+)
+</code></pre>
+<h3 id="example-5-form-url-encoded-data-api-call">Example 5: Form Url Encoded data api call</h3>
+<pre class="language-dart"><code class="language-dart">var res = await apiCall(
+  'https://mocktarget.apigee.net/echo',
+  options: Options(
+    method: HttpMethod.post,
+    formUrlEncoded: {'name': 'Rituraj', 'age': 30},
+    timeout: Duration(milliseconds: 10),
+  ),
+);
+print(res);
+</code></pre>
+<p><strong>Output:</strong></p>
+<pre class="language-txt"><code class="language-txt">ApiResponse(
+  Ok: true
+  Headers: {x-powered-by: Apigee, alt-svc: h3=":443"; ma=2592000,h3-29=":443"; ma=2592000, date: Sun, 16 Feb 2025 07:41:39 GMT, access-control-allow-origin: *, content-length: 441, etag: W/"1b9-WdGJtTc3EMBjFmBo/nWQS/mm5pY", via: 1.1 google, x-frame-options: ALLOW-FROM RESOURCE-URL, content-type: application/json; charset=utf-8, x-xss-protection: 1, x-content-type-options: nosniff}
+  Status Code: 200
+  Status Message: OK
+  JSON: {headers: {host: mocktarget.apigee.net, user-agent: Dart/3.7 (dart:io), content-type: application/x-www-form-urlencoded, accept-encoding: gzip, content-length: 19, x-cloud-trace-context: 6271bbc1a5430dfa12ebbb3b55070bc1/71101670834545451, via: 1.1 google, x-forwarded-for: 223.185.63.47, 35.227.194.212, x-forwarded-proto: https, connection: Keep-Alive}, method: POST, url: /, args: {}, body: name=Rituraj&amp;age=30}
+  Body: {headers: {host: mocktarget.apigee.net, user-agent: Dart/3.7 (dart:io), content-type: application/x-www-form-urlencoded, accept-encoding: gzip, content-length: 19, x-cloud-trace-context: 6271bbc1a5430dfa12ebbb3b55070bc1/71101670834545451, via: 1.1 google, x-forwarded-for: 223.185.63.47, 35.227.194.212, x-forwarded-proto: https, connection: Keep-Alive}, method: POST, url: /, args: {}, body: name=Rituraj&amp;age=30}
+)
+</code></pre>
+<h3 id="example-6-sending-json-data-in-post-using-body-field">Example 6: Sending JSON data in POST using body field</h3>
+<pre class="language-dart"><code class="language-dart">res = await apiCall(
+  'https://jsonplaceholder.typicode.com/todos',
+  options: Options(
+    method: HttpMethod.post,
+    body: jsonEncode({'title': 'foo', 'body': 'bar', 'userId': 1}),
+    headers: {'Content-Type': 'application/json'}
+  ),
+);
+print('res.ok: ${res.ok}');
+print('res.json: ${res.json}');
+</code></pre>
+<p><strong>Output:</strong></p>
+<pre class="language-txt"><code class="language-txt">res.ok: true
+res.json: {title: foo, body: bar, userId: 1, id: 201}
+</code></pre>
+<h3 id="example-7-server-sent-events-sse">Example 7: Server Sent Events (SSE)</h3>
+<pre class="language-dart"><code class="language-dart">var res = await apiCall(
+  'https://sse-fake.andros.dev/events/',
+  options: Options(stream: true),
+);
+res.stream!.listen((e) {
+  var msg = String.fromCharCodes(e as List&lt;int&gt;);
+  print(msg);
+});
+</code></pre>
+<p><strong>Output:</strong></p>
+<pre class="language-txt"><code class="language-txt">:
+event: stream-open
+data:
+2
+
+event: message
+data: {"action": "User connected", "name": "Jeremy"}
+2
+
+event: message
+data: {"action": "New message", "name": "Nancy", "text": "How behind pattern world use. Reality save he where lead language.\nWhile ability likely difficult body someone. Two hope else listen never.\nHand speak town indicate else. Positive need price throw."}
+2
+
+event: message
+data: {"action": "User connected", "name": "Melissa"}
+...
+</code></pre>
+</section>
+
+
+    
+<section class="summary source-code" id="source">
+  <h2><span>Implementation</span></h2>
+  <pre class="language-dart"><code class="language-dart">Future&lt;ApiResponse&gt; apiCall(String url, {Options options = const Options()}) async {
+  try {
+    var dioInstance = dio.Dio()..interceptors.clear();
+    if (options.stream) {
+      dioInstance.options.responseType = dio.ResponseType.stream;
+    }
+    dynamic body = options.body;
+    if (options.timeout != null) {
+      dioInstance.options.connectTimeout = options.timeout;
+    }
+    var headers = options.headers ?? {};
+    var query = options.query ?? {};
+    if (options.formData != null) {
+      dio.FormData? formData;
+      var map = &lt;String, Object&gt;{...options.formData!.fields};
+      for (var e in options.formData!.files.entries) {
+        if (e.value is String) {
+          map[e.key] = await _toMultipartFile(e.value as String);
+        } else if (e.value is List&lt;String&gt;) {
+          var list = &lt;dio.MultipartFile&gt;[];
+          for (var path in e.value as List&lt;String&gt;) {
+            list.add(await _toMultipartFile(path));
+          }
+          map[e.key] = list;
+        }
+      }
+      formData = dio.FormData.fromMap(map);
+      body = formData;
+    }
+    if (options.json != null) {
+      headers[&#39;content-type&#39;] = &#39;application&#47;json&#39;;
+      body = options.json;
+    }
+    if (options.formUrlEncoded != null) {
+      dioInstance.options.contentType = dio.Headers.formUrlEncodedContentType;
+      body = options.formUrlEncoded;
+    }
+    dio.Response response;
+    if (options.method == HttpMethod.get) {
+      response = await dioInstance.get(url, queryParameters: query, options: dio.Options(headers: headers));
+    } else if (options.method == HttpMethod.post) {
+      response = await dioInstance.post(
+        url,
+        data: body,
+        queryParameters: query,
+        options: dio.Options(headers: headers),
+        onSendProgress: options.onSendProgress,
+        onReceiveProgress: options.onReceiveProgress,
+      );
+    } else if (options.method == HttpMethod.put) {
+      response = await dioInstance.put(
+        url,
+        data: body,
+        queryParameters: query,
+        options: dio.Options(headers: headers),
+        onSendProgress: options.onSendProgress,
+        onReceiveProgress: options.onReceiveProgress,
+      );
+    } else if (options.method == HttpMethod.patch) {
+      response = await dioInstance.patch(
+        url,
+        data: body,
+        queryParameters: query,
+        options: dio.Options(headers: headers),
+        onSendProgress: options.onSendProgress,
+        onReceiveProgress: options.onReceiveProgress,
+      );
+    } else if (options.method == HttpMethod.delete) {
+      response = await dioInstance.delete(
+        url,
+        data: body,
+        queryParameters: options.query,
+        options: dio.Options(headers: headers),
+      );
+    } else {
+      throw &#39;Unknown HTTP Method!&#39;;
+    }
+
+    var responseHeaders = &lt;String, Object&gt;{};
+    for (final e in response.headers.map.entries) {
+      if (e.value.length == 1) {
+        responseHeaders[e.key] = e.value.first;
+      } else if (e.value.length &gt;= 2) {
+        responseHeaders[e.key] = e.value;
+      }
+    }
+
+    return ApiResponse(
+      headers: responseHeaders,
+      statusCode: response.statusCode,
+      statusMessage: response.statusMessage,
+      body: response.data,
+      json:
+          response.headers.map[&#39;content-type&#39;]?.any((e) =&gt; e.contains(&#39;application&#47;json&#39;)) == true
+              ? response.data
+              : null,
+      stream: options.stream ? response.data.stream : null,
+    );
+  } on dio.DioException catch (error) {
+    final headers = error.response?.headers.map ?? {};
+    var responseHeaders = &lt;String, Object&gt;{};
+    for (final e in headers.entries) {
+      if (e.value.length == 1) {
+        responseHeaders[e.key] = e.value.first;
+      } else if (e.value.length &gt;= 2) {
+        responseHeaders[e.key] = e.value;
+      }
+    }
+    dynamic json;
+    if (headers[&#39;content-type&#39;] != null &amp;&amp; headers[&#39;content-type&#39;]!.any((e) =&gt; e.contains(&#39;application&#47;json&#39;))) {
+      json = error.response?.data;
+    }
+
+    return ApiResponse(
+      headers: responseHeaders,
+      body: error.response?.data,
+      json: json,
+      statusCode: error.response?.statusCode,
+      statusMessage: error.response?.statusMessage,
+      error: error.message,
+    );
+  }
+}</code></pre>
+</section>
+
+
+  </div> <!-- /.main-content -->
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
+<header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+    <li><a href="../index.html">simple_api_call</a></li>
+    <li><a href="../simple_api_call">simple_api_call</a></li>
+    <li class="self-crumb">apiCall function</li>
+</ol>
+
+    <h5>simple_api_call library</h5>
+    <div id="dartdoc-sidebar-left-content"></div>
+  </div><!--/.sidebar-offcanvas-left-->
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+  </div><!--/.sidebar-offcanvas-->
+</main>
+<footer>
+  <span class="no-break">
+    simple_api_call
+      1.0.0
+  </span>
+  
+</footer>
+
+
+<script src="../static-assets/highlight.pack.js?v1"></script>
+<script src="../static-assets/docs.dart.js"></script>
+
+</body>
+</html>
+

@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="simple_api_call API docs, for the Dart programming language.">
+  <title>simple_api_call - Dart API docs</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+  
+  <link rel="stylesheet" href="static-assets/github.css?v1">
+  <link rel="stylesheet" href="static-assets/styles.css?v1">
+  <link rel="icon" href="static-assets/favicon.png?v1">
+  
+</head>
+
+<body data-base-href="" data-using-base-href="false" class="light-theme">
+<div id="overlay-under-drawer"></div>
+<header id="title">
+  <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li class="self-crumb">simple_api_call package</li>
+  </ol>
+  <div class="self-name">simple_api_call</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+  <div class="toggle" id="theme-button" title="Toggle brightness">
+    <label for="theme">
+      <input type="checkbox" id="theme" value="light-theme">
+      <span id="dark-theme-button" class="material-symbols-outlined">
+        dark_mode
+      </span>
+      <span id="light-theme-button" class="material-symbols-outlined">
+        light_mode
+      </span>
+    </label>
+  </div>
+</header>
+<main>
+  <div id="dartdoc-main-content" class="main-content">
+      
+<section class="desc markdown">
+  <h1 id="introduction">Introduction</h1>
+<p><strong>simple_api_call</strong> is a super simple dart package to perform api call. Its SDK is much easier to use so that you can focus on business logic. Its build on top of <a href="https://pub.dev/packages/dio">dio package</a>.</p>
+<h1 id="features">Features</h1>
+<ul>
+<li>Supported HTTP methods: GET, POST, PUT, PATCH, DELETE</li>
+<li>JSON Request Body (sets headers automatically)</li>
+<li>Form Data Request Body (with easy interface for single/multiple - fields and files)</li>
+<li>Form URL Encoded Body</li>
+<li>URL search params (aka URL Query)</li>
+<li>Request headers</li>
+<li>Request body</li>
+<li>Timeout for API Call abort</li>
+<li>On upload progress update handler</li>
+<li>On download progress update handler</li>
+<li>Streams feature for SSE based response</li>
+</ul>
+<h1 id="examples">Examples</h1>
+<h2 id="example-1-simple-get-api-call">Example 1: Simple GET api call</h2>
+<pre class="language-dart"><code class="language-dart">import 'package:simple_api_call/simple_api_call.dart';
+
+void main() async {
+  var res = await apiCall('https://jsonplaceholder.typicode.com/todos/1');
+  print(res);
+}
+</code></pre>
+<p><strong>Output:</strong></p>
+<pre class="language-txt"><code class="language-txt">ApiResponse(
+  Ok: true
+  Headers: {x-ratelimit-reset: 1739370722, x-ratelimit-limit: 1000, date: Sun, 16 Feb 2025 08:01:31 GMT, transfer-encoding: chunked, vary: Origin, Accept-Encoding, content-encoding: gzip, x-ratelimit-remaining: 999, pragma: no-cache, server: cloudflare, reporting-endpoints: heroku-nel=https://nel.heroku.com/reports?ts=1739370677&amp;sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&amp;s=c4034Ntzv9xG2rv4p9jTn01XXS2WI5YBk%2BZUpEh0KUI%3D, cf-ray: 912c029eaf420da6-MRS, etag: W/"53-hfEnumeNh6YirfjyjaujcOPPT+s", connection: keep-alive, cache-control: max-age=43200, age: 5384, server-timing: cfL4;desc="?proto=TCP&amp;rtt=256732&amp;min_rtt=255916&amp;rtt_var=97601&amp;sent=5&amp;recv=6&amp;lost=0&amp;retrans=0&amp;sent_bytes=2809&amp;recv_bytes=719&amp;delivery_rate=14288&amp;cwnd=252&amp;unsent_bytes=0&amp;cid=7168a6c4413b1290&amp;ts=304&amp;x=0", report-to: {"group":"heroku-nel","max_age":3600,"endpoints":[{"url":"https://nel.heroku.com/reports?ts=1739370677&amp;sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&amp;s=c4034Ntzv9xG2rv4p9jTn01XXS2WI5YBk%2BZUpEh0KUI%3D"}]}, cf-cache-status: HIT, content-type: application/json; charset=utf-8, access-control-allow-credentials: true, x-powered-by: Express, alt-svc: h3=":443"; ma=86400, nel: {"report_to":"heroku-nel","max_age":3600,"success_fraction":0.005,"failure_fraction":0.05,"response_headers":["Via"]}, via: 1.1 vegur, x-content-type-options: nosniff, expires: -1}
+  Status Code: 200
+  Status Message: OK
+  JSON: {userId: 1, id: 1, title: delectus aut autem, completed: false}
+  Body: {userId: 1, id: 1, title: delectus aut autem, completed: false}
+)
+</code></pre>
+<h2 id="example-2-post-api-call">Example 2: POST api call</h2>
+<pre class="language-dart"><code class="language-dart">import 'package:simple_api_call/simple_api_call.dart';
+
+void main() async {
+  var res = await apiCall(
+    'https://jsonplaceholder.typicode.com/todos',
+    options: Options(
+      method: HttpMethod.post,
+      json: {'title': 'foo', 'body': 'bar', 'userId': 1},
+    ),
+  );
+  print('res.ok: ${res.ok}');
+  print('res.statusCode: ${res.statusCode}');
+  print('res.statusMessage: ${res.statusMessage}');
+  print('res.json: ${res.json}');
+  print('res.body: ${res.body}');
+  print('res.headers: ${res.headers}');
+  print('res.error: ${res.error}');
+}
+</code></pre>
+<p><strong>Output:</strong></p>
+<pre class="language-txt"><code class="language-txt">res.ok: true
+res.statusCode: 201
+res.statusMessage: Created
+res.json: {title: foo, body: bar, userId: 1, id: 201}
+res.body: {title: foo, body: bar, userId: 1, id: 201}
+res.headers: {x-ratelimit-reset: 1739693050, x-ratelimit-limit: 1000, date: Sun, 16 Feb 2025 08:03:50 GMT, vary: Origin, X-HTTP-Method-Override, Accept-Encoding, x-ratelimit-remaining: 999, access-control-expose-headers: Location, pragma: no-cache, server: cloudflare, location: https://jsonplaceholder.typicode.com/todos/201, reporting-endpoints: heroku-nel=https://nel.heroku.com/reports?ts=1739693030&amp;sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&amp;s=8toGMSh4ryWYsHycTphGd5%2B01FspBh5NXllaidi2q1s%3D, content-length: 65, cf-ray: 912c06004b73b6c4-MRS, etag: W/"41-S72XhYKRBNSGo0mxoArJPNcK+ug", connection: keep-alive, cache-control: no-cache, server-timing: cfL4;desc="?proto=TCP&amp;rtt=259667&amp;min_rtt=254705&amp;rtt_var=79955&amp;sent=5&amp;recv=6&amp;lost=0&amp;retrans=0&amp;sent_bytes=2810&amp;recv_bytes=809&amp;delivery_rate=13078&amp;cwnd=252&amp;unsent_bytes=0&amp;cid=af55f34cf6f28bc5&amp;ts=580&amp;x=0", report-to: {"group":"heroku-nel","max_age":3600,"endpoints":[{"url":"https://nel.heroku.com/reports?ts=1739693030&amp;sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&amp;s=8toGMSh4ryWYsHycTphGd5%2B01FspBh5NXllaidi2q1s%3D"}]}, cf-cache-status: DYNAMIC, content-type: application/json; charset=utf-8, access-control-allow-credentials: true, x-powered-by: Express, alt-svc: h3=":443"; ma=86400, nel: {"report_to":"heroku-nel","max_age":3600,"success_fraction":0.005,"failure_fraction":0.05,"response_headers":["Via"]}, via: 1.1 vegur, x-content-type-options: nosniff, expires: -1}
+res.error: null
+</code></pre>
+<h2 id="example-3-form-data-upload-with-progress-updates">Example 3: Form Data Upload with progress updates</h2>
+<pre class="language-dart"><code class="language-dart">import 'package:simple_api_call/simple_api_call.dart';
+
+void main() async {
+  var res = await apiCall(
+    'https://api.escuelajs.co/api/v1/files/upload',
+    options: Options(
+      method: HttpMethod.post,
+      formData: FormData(
+        fields: {
+          'name': 'Rituraj',
+          'age': ['20'],
+        },
+        files: {
+          'file': 'pubspec.lock',
+          'songs': ['music.mp3', 'tune.mp3'],
+        },
+      ), // files must exist
+      onSendProgress: (sent, total) {
+        print('Sent: $sent/$total (${(sent * 100 / total).toStringAsFixed(2)}%)');
+      },
+      onReceiveProgress: (sent, total) {
+        print('Receive: $sent/$total (${(sent * 100 / total).toStringAsFixed(2)}%)');
+      },
+    ),
+  );
+  print(res);
+}
+</code></pre>
+<p><strong>Output:</strong></p>
+<pre class="language-txt"><code class="language-txt">Sent: 29/3627 (0.80%)
+Sent: 76/3627 (2.10%)
+Sent: 83/3627 (2.29%)
+Sent: 85/3627 (2.34%)
+Sent: 114/3627 (3.14%)
+Sent: 160/3627 (4.41%)
+Sent: 162/3627 (4.47%)
+Sent: 164/3627 (4.52%)
+Sent: 193/3627 (5.32%)
+Sent: 305/3627 (8.41%)
+Sent: 3594/3627 (99.09%)
+Sent: 3596/3627 (99.15%)
+Sent: 3627/3627 (100.00%)
+Receive: 115/115 (100.00%)
+ApiResponse(
+  Ok: true
+  Headers: {connection: keep-alive, x-powered-by: Express, date: Sun, 16 Feb 2025 08:04:57 GMT, access-control-allow-origin: *, reporting-endpoints: heroku-nel=https://nel.heroku.com/reports?ts=1739693097&amp;sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&amp;s=pThExivs6OFFk10FdWiMWDPpdrYPBMn2JwAw2nfMGyY%3D, content-length: 115, nel: {"report_to":"heroku-nel","max_age":3600,"success_fraction":0.005,"failure_fraction":0.05,"response_headers":["Via"]}, report-to: {"group":"heroku-nel","max_age":3600,"endpoints":[{"url":"https://nel.heroku.com/reports?ts=1739693097&amp;sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&amp;s=pThExivs6OFFk10FdWiMWDPpdrYPBMn2JwAw2nfMGyY%3D"}]}, etag: W/"73-SLAWrBZ33uCwI32OGJXhg1FCtdU", via: 1.1 vegur, content-type: application/json; charset=utf-8, server: Cowboy}
+  Status Code: 201
+  Status Message: Created
+  JSON: {originalname: pubspec.lock, filename: b610.lock, location: https://api.escuelajs.co/api/v1/files/b610.lock}
+  Body: {originalname: pubspec.lock, filename: b610.lock, location: https://api.escuelajs.co/api/v1/files/b610.lock}
+)
+</code></pre>
+<h2 id="example-4-api-call-with-custom-timeout-and-url-search-params-query">Example 4: API call with custom timeout and URL search params (query)</h2>
+<pre class="language-dart"><code class="language-dart">import 'package:simple_api_call/simple_api_call.dart';
+
+void main() async {
+  var res = await apiCall(
+    'https://jsonplaceholder.typicode.com/todos',
+    options: Options(
+      timeout: Duration(milliseconds: 100),
+      query: {'limit': '20', 'page': '1'},
+    ),
+  );
+  print(res);
+}
+</code></pre>
+<p><strong>Output:</strong></p>
+<pre class="language-txt"><code class="language-txt">ApiResponse(
+  Ok: false
+  Headers: {}
+  Error: The request connection took longer than 0:00:00.100000 and it was aborted. To get rid of this exception, try raising the RequestOptions.connectTimeout above the duration of 0:00:00.100000 or improve the response time of the server.
+)
+</code></pre>
+<h2 id="example-5-form-url-encoded-data-api-call">Example 5: Form Url Encoded data api call</h2>
+<pre class="language-dart"><code class="language-dart">import 'package:simple_api_call/simple_api_call.dart';
+
+void main() async {
+  var res = await apiCall(
+    'https://mocktarget.apigee.net/echo',
+    options: Options(
+      method: HttpMethod.post,
+      formUrlEncoded: {'name': 'Rituraj', 'age': 30},
+    ),
+  );
+  print(res);
+}
+</code></pre>
+<p><strong>Output:</strong></p>
+<pre class="language-txt"><code class="language-txt">ApiResponse(
+  Ok: true
+  Headers: {x-powered-by: Apigee, alt-svc: h3=":443"; ma=2592000,h3-29=":443"; ma=2592000, date: Sun, 16 Feb 2025 08:06:38 GMT, access-control-allow-origin: *, content-length: 444, etag: W/"1bc-+bZufFj37PLWVN5Lb9i9Z3e9/lE", via: 1.1 google, x-frame-options: ALLOW-FROM RESOURCE-URL, content-type: application/json; charset=utf-8, x-xss-protection: 1, x-content-type-options: nosniff}
+  Status Code: 200
+  Status Message: OK
+  JSON: {headers: {host: mocktarget.apigee.net, user-agent: Dart/3.7 (dart:io), content-type: application/x-www-form-urlencoded, accept-encoding: gzip, content-length: 19, x-cloud-trace-context: c539756f3f0b14f63c988f6d0b6d2491/16056943780855021050, via: 1.1 google, x-forwarded-for: 223.185.63.47, 35.227.194.212, x-forwarded-proto: https, connection: Keep-Alive}, method: POST, url: /, args: {}, body: name=Rituraj&amp;age=30}
+  Body: {headers: {host: mocktarget.apigee.net, user-agent: Dart/3.7 (dart:io), content-type: application/x-www-form-urlencoded, accept-encoding: gzip, content-length: 19, x-cloud-trace-context: c539756f3f0b14f63c988f6d0b6d2491/16056943780855021050, via: 1.1 google, x-forwarded-for: 223.185.63.47, 35.227.194.212, x-forwarded-proto: https, connection: Keep-Alive}, method: POST, url: /, args: {}, body: name=Rituraj&amp;age=30}
+)
+</code></pre>
+<h2 id="example-6-sending-json-data-in-post-using-body-field">Example 6: Sending JSON data in POST using body field</h2>
+<pre class="language-dart"><code class="language-dart">import 'dart:convert';
+
+import 'package:simple_api_call/simple_api_call.dart';
+
+void main() async {
+  var res = await apiCall(
+    'https://jsonplaceholder.typicode.com/todos',
+    options: Options(
+      method: HttpMethod.post,
+      body: jsonEncode({'title': 'foo', 'body': 'bar', 'userId': 1}),
+      headers: {'Content-Type': 'application/json'}
+    ),
+  );
+  print('res.ok: ${res.ok}');
+  print('res.json: ${res.json}');
+}
+</code></pre>
+<p><strong>Output:</strong></p>
+<pre class="language-txt"><code class="language-txt">res.ok: true
+res.json: {title: foo, body: bar, userId: 1, id: 201}
+</code></pre>
+<h2 id="example-7-server-sent-events-sse">Example 7: Server Sent Events (SSE)</h2>
+<pre class="language-dart"><code class="language-dart">import 'package:simple_api_call/simple_api_call.dart';
+
+void main() async {
+  var res = await apiCall(
+    'https://sse-fake.andros.dev/events/',
+    options: Options(stream: true),
+  );
+  res.stream!.listen((e) {
+    var msg = String.fromCharCodes(e as List&lt;int&gt;);
+    print(msg);
+  });
+}
+</code></pre>
+<p><strong>Output:</strong></p>
+<pre class="language-txt"><code class="language-txt">:
+
+event: stream-open
+data:
+2
+
+event: message
+data: {"action": "User disconnected", "name": "Terri"}
+2
+
+event: message
+data: {"action": "New message", "name": "Angelica", "text": "Up into professional six indicate. Example begin live. Shoulder pattern since.\nMission adult standard blood American. Both company occur parent better."}
+2
+
+event: message
+data: {"action": "User connected", "name": "Stephen"}
+...
+</code></pre>
+<h1 id="references">References</h1>
+<ul>
+<li><strong>Equivalent Go Plugin:</strong> <a href="https://pkg.go.dev/github.com/riturajshakti/apicall">https://pkg.go.dev/github.com/riturajshakti/apicall</a></li>
+<li><strong>Learning Dart by Examples:</strong> <a href="https://github.com/riturajshakti/learn-dart-by-examples">https://github.com/riturajshakti/learn-dart-by-examples</a></li>
+<li><strong>Learning Go by Examples:</strong> <a href="https://github.com/riturajshakti/learn-go-by-examples">https://github.com/riturajshakti/learn-go-by-examples</a></li>
+<li><strong>Learning Node by Examples:</strong> <a href="https://github.com/riturajshakti/learn-node-by-examples">https://github.com/riturajshakti/learn-node-by-examples</a></li>
+<li><strong>Validation Plugin Node.js:</strong> <a href="https://www.npmjs.com/package/super-easy-validator">https://www.npmjs.com/package/super-easy-validator</a></li>
+<li><strong>More Learning Resources &amp; Code Samples:</strong> <a href="https://github.com/riturajshakti?tab=repositories">https://github.com/riturajshakti?tab=repositories</a></li>
+</ul>
+<h1 id="feedback">Feedback</h1>
+<p>If you like this plugin, then please add stars to this <a href="https://github.com/riturajshakti/dart_simple_api_call">github repository</a>. Also if you have any feedback or suggestions to add more features to this packages, don't hesitate to contact me at <a href="mailto:riturajshakti@gmail.com"></a><a href="mailto:riturajshakti@gmail.com">riturajshakti@gmail.com</a>.</p>
+<p>I hope this packages add value to your life 😀</p>
+<p>Thankyou</p>
+</section>
+
+
+      <section class="summary">
+          <h2>Libraries</h2>
+        <dl>
+          <dt id="simple_api_call">
+  <span class="name"><a href="simple_api_call">simple_api_call</a></span> 
+
+</dt>
+<dd>A dart package for performing api calls in a much simpler way. Its able to perform GET/POST/PUT/PATCH/DELETE with Form Data and JSON support builtin. It also supports Server Sent Events.
+</dd>
+
+        </dl>
+      </section>
+  </div> <!-- /.main-content -->
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
+<header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+    <li class="self-crumb">simple_api_call package</li>
+</ol>
+
+    <h5 class="hidden-xs"><span class="package-name">simple_api_call</span> <span class="package-kind">package</span></h5>
+    <ol>
+      <li class="section-title">Libraries</li>
+      <li><a href="simple_api_call">simple_api_call</a></li>
+</ol>
+
+  </div>
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+  </div>
+</main>
+<footer>
+  <span class="no-break">
+    simple_api_call
+      1.0.0
+  </span>
+  
+</footer>
+
+
+<script src="static-assets/highlight.pack.js?v1"></script>
+<script src="static-assets/docs.dart.js"></script>
+
+</body>
+</html>
+

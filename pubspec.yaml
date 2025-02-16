@@ -1,0 +1,14 @@
+name: simple_api_call
+description: A dart package for performing api calls in a much simpler way. Its able to perform GET/POST/PUT/PATCH/DELETE with Form Data and JSON support builtin. It also supports Server Sent Events.
+version: 1.0.0
+repository: https://github.com/riturajshakti/dart_simple_api_call
+
+environment:
+  sdk: ^3.7.0
+
+dependencies:
+  dio: ^5.8.0+1
+  mime: ^2.0.0
+
+dev_dependencies:
+  lints: ^4.0.0
